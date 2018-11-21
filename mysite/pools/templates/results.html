@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .mypainel {
+            margin: 50px 0px 0px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-default mypainel" >
+            <div class="panel-heading">{{question}} / {{question.pub_date}}</div>
+            <ul class="list-group">
+                {% for choice in question.choices.all %}
+                <a href="{% url 'result' question.id%}">
+                <il class="list-group-item"> {{choice}} <span class="badge">{{choice.votes}}</span></il></a>
+                {% endfor %}
+                <il class="list-group-item">Total de votos: <span class="badge">{{total}}</span></il>
+            </ul>
+            <a href="{% url 'exibir' question.id%}"><button type="button" class="btn btn-default">Voltar</button></a>
+        </div>
+    </div>
+</body>
+</html>
